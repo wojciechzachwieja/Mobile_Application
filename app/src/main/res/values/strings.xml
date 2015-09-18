@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">PartyPortal</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="login">USERNAME</string>
+    <string name="password">PASSWORD</string>
+    <string name="edit_login">Enter username</string>
+    <string name="edit_password">Enter password</string>
+    <string name="login_button">LOG IN</string>
+    <string name="register_button">SIGN UP</string>
+    <string name="email">EMAIL</string>
+    <string name="edit_email">Enter email</string>
+    <string name="create_account">CREATE ACCOUNT</string>
+    <string name="logout">Logout</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_login_">Login_Activity</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+</resources>
+

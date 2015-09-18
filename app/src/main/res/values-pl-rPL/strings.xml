@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login">LOGIN</string>
+    <string name="password">HASŁO</string>
+    <string name="edit_login">Wprowadź login</string>
+    <string name="edit_password">Wprowadź hasło</string>
+    <string name="login_button">ZALOGUJ</string>
+    <string name="register_button">STWÓRZ KONTO</string>
+    <string name="edit_email">Wpisz email</string>
+    <string name="create_account">STWÓRZ KONTO</string>
+    <string name="logout">Wyloguj</string>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="MyDarkRed">#c2000d</color>
+    <color name="MyBlue">#005ec2</color>
+    <color name="BackgoundGray">#453d31</color>
+    <color name="TextLightRed">#ffa57b</color>
+    <color name="TextWhite">#f8eadf</color>
+    <color name="BackgroundWhite">#f8eadf</color>
+
+</resources>
