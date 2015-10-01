@@ -9,4 +9,5 @@
     <string name="edit_email">Wpisz email</string>
     <string name="create_account">STWÓRZ KONTO</string>
     <string name="logout">Wyloguj</string>
+    <string name="order">Zamów</string>
 </resources>

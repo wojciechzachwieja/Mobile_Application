@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/item">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="1dp"
+        android:layout_marginLeft="1dp"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:src="@drawable/abc_btn_check_material"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_high_button"
+        android:background="@drawable/normal_red_button"
+        android:orientation="horizontal"
+        android:layout_marginRight="1dp"
+        android:layout_marginLeft="1dp">
+        <TextView
+            android:id="@+id/title"
+            android:layout_marginLeft="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/default_high_button"
+            android:text="Title"
+            android:background="@null"
+            />
+
+        <Button
+            android:id="@+id/order"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/normal_blue_button"
+            android:layout_width="80dp"
+            android:layout_height="@dimen/default_high_button"
+            android:text="@string/order"
+            />
+    </RelativeLayout>
+
+</LinearLayout>
+

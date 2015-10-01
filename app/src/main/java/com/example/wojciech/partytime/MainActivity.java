@@ -1,8 +1,8 @@
 package com.example.wojciech.partytime;
 
 import java.util.Locale;
-
 import android.content.Intent;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -16,11 +16,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.ListView;
 import com.parse.ParseUser;
 
 public class MainActivity extends AppCompatActivity implements ActionBar.TabListener {
 
+    private static final int REQUEST_CODE = 69;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -35,16 +36,19 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
      * The {@link ViewPager} that will host the section contents.
      */
     ViewPager mViewPager;
+    private boolean LOAD_OK = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if(ParseUser.getCurrentUser() == null){
             changeActivityToLogin();
         }
-
-
+        if(!LOAD_OK)
+            changeActivityToLoading();
 
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
@@ -80,21 +84,21 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
                             .setTabListener(this));
         }
     }
-
-    private void changeActivityToLogin() {
-        Intent intent = new Intent(this,Login_Activity.class);
-        startActivity(intent);
-        finish();
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK && requestCode == REQUEST_CODE){
+            LOAD_OK = true;
+        }
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -117,14 +121,17 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         // When the given tab is selected, switch to the corresponding page in
         // the ViewPager.
         mViewPager.setCurrentItem(tab.getPosition());
+        MyListAdapter.setCurrentRestarant(tab.getPosition());
     }
 
     @Override
     public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
     }
 
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+        MyListAdapter.setCurrentRestarant(tab.getPosition());
     }
 
     /**
@@ -141,6 +148,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
+            //MainActivity_Fragment fragment = new MainActivity_Fragment();
             return PlaceholderFragment.newInstance(position + 1);
         }
 
@@ -155,11 +163,13 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
             Locale l = Locale.getDefault();
             switch (position) {
                 case 0:
-                    return getString(R.string.title_section1).toUpperCase(l);
+                    return MyListAdapter.getNameOfRestaurant(0);
                 case 1:
-                    return getString(R.string.title_section2).toUpperCase(l);
+                    return MyListAdapter.getNameOfRestaurant(1);
                 case 2:
-                    return getString(R.string.title_section3).toUpperCase(l);
+                    return MyListAdapter.getNameOfRestaurant(2);
+                case 3 :
+                    return getString(R.string.title_section4).toUpperCase(l);
             }
             return null;
         }
@@ -193,9 +203,25 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            return rootView;
+            View view = inflater.inflate(R.layout.fragment_main, container,false);
+
+
+            ListView listView = (ListView) view.findViewById(R.id.List_dishes);
+
+
+            MyListAdapter myListAdapter = new MyListAdapter(getActivity());
+            listView.setAdapter(myListAdapter);
+            return view;
         }
     }
 
+    private void changeActivityToLogin() {
+        Intent intent = new Intent(this,Login_Activity.class);
+        startActivity(intent);
+        finish();
+    }
+    private void changeActivityToLoading() {
+        Intent intent = new Intent(this,Loading_Activity.class);
+        startActivityForResult(intent,REQUEST_CODE);
+    }
 }

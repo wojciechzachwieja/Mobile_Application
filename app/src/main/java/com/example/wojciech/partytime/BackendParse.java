@@ -16,6 +16,8 @@ public class BackendParse extends Application {
         super.onCreate();
         // Enable Local Datastore.
         Parse.enableLocalDatastore(this);
+        //ParseObject.registerSubclass(DetailsOfRestaurant.class);
+        ParseObject.registerSubclass(Restaurants.class);
         Parse.initialize(this, "h9ryp2fLzrfvvKtpZFpPrdu22MxDOVyqjab5TPFG", "ONTRn9U8WuIAL3kYIEXnWhxci7KJyKC3B9GsrJUa");
     }
 }
