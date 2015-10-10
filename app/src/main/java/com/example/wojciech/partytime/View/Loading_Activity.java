@@ -1,13 +1,16 @@
-package com.example.wojciech.partytime;
+package com.example.wojciech.partytime.View;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 
+import com.example.wojciech.partytime.Model.MyListAdapter;
+import com.example.wojciech.partytime.R;
+
 public class Loading_Activity extends Activity
 {
-
 
     /** Called when the activity is first created. */
     @Override
@@ -41,35 +44,6 @@ public class Loading_Activity extends Activity
         @Override
         protected Void doInBackground(Void... params)
         {
-            /* This is just a code that delays the thread execution 4 times,
-             * during 850 milliseconds and updates the current progress. This
-             * is where the code that is going to be executed on a background
-             * thread must be placed.
-             */
-//            try
-//            {
-//                //Get the current thread's token
-//                synchronized (this)
-//                {
-//                    //Initialize an integer (that will act as a counter) to zero
-//                    int counter = 0;
-//                    //While the counter is smaller than four
-//                    while(counter <= 4)
-//                    {
-//                        //Wait 850 milliseconds
-//                        this.wait(850);
-//                        //Increment the counter
-//                        counter++;
-//                        //Set the current progress.
-//                        //This value is going to be passed to the onProgressUpdate() method.
-//                        publishProgress(counter*25);
-//                    }
-//                }
-//            }
-//            catch (InterruptedException e)
-//            {
-//                e.printStackTrace();
-//            }
             MyListAdapter.setRestaurants();
             return null;
         }
@@ -80,9 +54,9 @@ public class Loading_Activity extends Activity
         {
             //close the progress dialog
             activity.setResult(Activity.RESULT_OK);
+            Intent intent = new Intent(activity,MainActivity.class);
+            activity.startActivity(intent);
             activity.finish();
         }
     }
-
-
 }

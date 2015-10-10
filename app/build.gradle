@@ -24,4 +24,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile files('libs/Parse-1.10.1.jar')
     compile files('libs/bolts-android-1.2.1-javadoc.jar')
+    compile 'com.google.code.gson:gson:2.2.4'
 }

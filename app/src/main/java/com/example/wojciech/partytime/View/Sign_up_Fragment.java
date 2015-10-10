@@ -1,4 +1,4 @@
-package com.example.wojciech.partytime;
+package com.example.wojciech.partytime.View;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.wojciech.partytime.R;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;

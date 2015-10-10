@@ -1,11 +1,11 @@
-package com.example.wojciech.partytime;
+package com.example.wojciech.partytime.View;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-
+import com.example.wojciech.partytime.R;
 import com.parse.ParseUser;
 
 public class Sign_up_Activity extends Activity {

@@ -1,4 +1,4 @@
-package com.example.wojciech.partytime;
+package com.example.wojciech.partytime.Model;
 
 import com.parse.ParseClassName;
 import com.parse.ParseObject;

@@ -1,4 +1,4 @@
-package com.example.wojciech.partytime;
+package com.example.wojciech.partytime.View;
 
 import java.util.Locale;
 import android.content.Intent;
@@ -17,6 +17,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.example.wojciech.partytime.Model.MyListAdapter;
+import com.example.wojciech.partytime.R;
 import com.parse.ParseUser;
 
 public class MainActivity extends AppCompatActivity implements ActionBar.TabListener {
@@ -36,10 +40,10 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
      * The {@link ViewPager} that will host the section contents.
      */
     ViewPager mViewPager;
-    private boolean LOAD_OK = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         super.onCreate(savedInstanceState);
@@ -47,8 +51,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         if(ParseUser.getCurrentUser() == null){
             changeActivityToLogin();
         }
-        if(!LOAD_OK)
-            changeActivityToLoading();
+
 
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
@@ -87,8 +90,9 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK && requestCode == REQUEST_CODE){
-            LOAD_OK = true;
+        if(resultCode == RESULT_OK){
+            Toast toast = Toast.makeText(this,"Order",Toast.LENGTH_SHORT);
+            toast.show();
         }
     }
 
@@ -120,8 +124,9 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
         // When the given tab is selected, switch to the corresponding page in
         // the ViewPager.
+        MyListAdapter.setCurrentRestaurant(tab.getPosition());
         mViewPager.setCurrentItem(tab.getPosition());
-        MyListAdapter.setCurrentRestarant(tab.getPosition());
+
     }
 
     @Override
@@ -131,7 +136,8 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
 
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-        MyListAdapter.setCurrentRestarant(tab.getPosition());
+
+
     }
 
     /**
@@ -207,10 +213,9 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
 
 
             ListView listView = (ListView) view.findViewById(R.id.List_dishes);
-
-
             MyListAdapter myListAdapter = new MyListAdapter(getActivity());
             listView.setAdapter(myListAdapter);
+            listView.setOnItemClickListener(myListAdapter);
             return view;
         }
     }

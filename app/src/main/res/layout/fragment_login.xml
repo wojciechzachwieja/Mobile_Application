@@ -1,6 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="com.example.wojciech.partytime.Login_Fragment"
+    android:layout_height="match_parent" tools:context="com.example.wojciech.partytime.View.Login_Fragment"
     android:id="@+id/login">
 
     <!-- TODO: Update blank fragment layout -->

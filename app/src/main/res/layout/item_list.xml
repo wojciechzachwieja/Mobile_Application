@@ -19,7 +19,8 @@
         android:background="@drawable/normal_red_button"
         android:orientation="horizontal"
         android:layout_marginRight="1dp"
-        android:layout_marginLeft="1dp">
+        android:layout_marginLeft="1dp"
+        android:gravity="center">
         <TextView
             android:id="@+id/title"
             android:layout_marginLeft="15dp"
@@ -29,14 +30,6 @@
             android:background="@null"
             />
 
-        <Button
-            android:id="@+id/order"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/normal_blue_button"
-            android:layout_width="80dp"
-            android:layout_height="@dimen/default_high_button"
-            android:text="@string/order"
-            />
     </RelativeLayout>
 
 </LinearLayout>

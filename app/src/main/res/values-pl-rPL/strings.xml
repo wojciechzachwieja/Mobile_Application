@@ -10,4 +10,7 @@
     <string name="create_account">STWÓRZ KONTO</string>
     <string name="logout">Wyloguj</string>
     <string name="order">Zamów</string>
+    <string name="PRICE">cena</string>
+    <string name="SIZE">Rozmiar</string>
+    <string name="TASTE">Smak</string>
 </resources>

@@ -1,11 +1,12 @@
-package com.example.wojciech.partytime;
+package com.example.wojciech.partytime.View;
 
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
+
+import com.example.wojciech.partytime.R;
 
 /**
  * Created by Wojciech on 2015-09-19.
@@ -26,6 +27,6 @@ public class MainActivity_Fragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        //((MainActivity)getActivity()).setActionBatTitle("McDonald");
+
     }
 }

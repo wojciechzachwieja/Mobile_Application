@@ -1,4 +1,4 @@
-package com.example.wojciech.partytime;
+package com.example.wojciech.partytime.Model;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
 /**
  * Created by Wojciech on 2015-09-26.
  */
-public class Items {
+public class Items implements Serializable {
     final static String[] sizes = {"Large","Small"};
     private int size;
     private long id;
@@ -95,6 +96,16 @@ public class Items {
 
         }
 
+    public static Items[] ItemsFactory(int start,int end,int size,List<Restaurants> restaurants) throws JSONException {
+        Items[] result = new Items[size];
+        for(int i = start;i <= end;++i) {
+            result[i] = new Items(restaurants,i);
+        }
+
+        return result;
+    }
+
+
     public static String[] getSizes() {
         return sizes;
     }
@@ -114,5 +125,7 @@ public class Items {
     public String getName() {
         return name;
     }
+
+
 }
 

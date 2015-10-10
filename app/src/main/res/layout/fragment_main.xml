@@ -3,7 +3,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
     android:orientation="vertical"
-    tools:context="com.example.wojciech.partytime.MainActivity$PlaceholderFragment">
+    tools:context="com.example.wojciech.partytime.View.MainActivity$PlaceholderFragment">
 
     <ListView
         android:id="@+id/List_dishes"

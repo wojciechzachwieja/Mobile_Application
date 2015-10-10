@@ -23,5 +23,10 @@
     <string name="title_section3">Burger King</string>
     <string name="title_section4">Pizza Hut</string>
     <string name="title_activity_loading">Loading</string>
+    <string name="title_activity_details">Details</string>
+    <string name="title_activity_order_">Order_Activity</string>
+    <string name="PRICE">Price</string>
+    <string name="SIZE">Size</string>
+    <string name="TASTE">Taste</string>
 </resources>
 

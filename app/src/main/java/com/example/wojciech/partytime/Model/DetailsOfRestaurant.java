@@ -1,4 +1,4 @@
-package com.example.wojciech.partytime;
+package com.example.wojciech.partytime.Model;
 
 
 import android.graphics.Bitmap;
